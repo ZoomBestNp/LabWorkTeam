@@ -43,14 +43,18 @@ namespace LabWork4
         private void FilmAddButton_Click(object sender, RoutedEventArgs e)
         {
             string filmName = FilmTextBox.Text;
-            int selectedGenre = (int)GenreComboBox.SelectedValue;
+            Genre selectedGenre = (Genre)GenreComboBox.SelectedValue;
             int selectedAgeRating = (int)AgeRatingComboBox.SelectedValue;
-            var rating = RatingTextBox.Text;
+            if (!decimal.TryParse(RatingTextBox.Text, out decimal rating)) 
+            {
+                MessageBox.Show("Пожалуйста, введите корректный рейтинг!");
+                return;
+            }
 
             var newFilm = new Film
             {
                 FilmName = filmName,
-                Genre = selectedGenre.ToString(),
+                Genre = selectedGenre,
                 AgeRating = selectedAgeRating.ToString(),
                 Rating = rating
             };

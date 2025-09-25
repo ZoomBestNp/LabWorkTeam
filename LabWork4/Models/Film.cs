@@ -13,7 +13,7 @@ public partial class Film
 
     public string? AgeRating { get; set; }
 
-    public int Rating { get; set; }
+    public decimal? Rating { get; set; }
 
     public virtual Genre? Genre { get; set; }
 }
